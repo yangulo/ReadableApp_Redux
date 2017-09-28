@@ -49,7 +49,10 @@ export const updateComment = (id, timestamp, body) => dispatch =>
     CommentAPI.update(id, timestamp, body).then((comment) => dispatch({type: types.EDIT_COMMENT, comment: comment}));
 
 
-export const orderBy = (newOrder) => dispatch => 
-    dispatch({type: types.UPDATE_ORDER, newOrder: newOrder});
+export const orderByTime = () => dispatch => 
+    dispatch({type: types.UPDATE_ORDER_TIME});
+
+export const orderByVoteScore = () => dispatch => 
+    dispatch({type: types.UPDATE_ORDER_VOTE_SCORE});
 
 

@@ -30,7 +30,7 @@ class Post extends React.Component{
         upVotePost: PropTypes.func.isRequired,
         downVotePost: PropTypes.func.isRequired,
         updatePost: PropTypes.func.isRequired,
-        updateComment: PropTypes.func.isRequired
+        updateComment: PropTypes.func.isRequired,
     };
 
     componentDidMount() {
@@ -151,5 +151,5 @@ function mapStateToProps({ post, comments }) {
     upVotePost, 
     downVotePost,
     updatePost,
-    updateComment
+    updateComment,
   })(Post);

@@ -1,4 +1,4 @@
-import {GET_POSTS, GET_POST_BY_CATEGORY, DELETE_POST, UP_VOTE_POST, DOWN_VOTE_POST} from '../constants/ActionTypes'
+import {GET_POSTS, GET_POST_BY_CATEGORY, DELETE_POST, UP_VOTE_POST, DOWN_VOTE_POST, UPDATE_ORDER_TIME, UPDATE_ORDER_VOTE_SCORE} from '../constants/ActionTypes'
 
 export default function(state = {}, action) {
   switch (action.type) {
@@ -44,6 +44,18 @@ export default function(state = {}, action) {
         indexxx++;
       }
       return [...state.slice(0, indexxx), action.post, ...state.slice(indexxx + 1)];
+    case UPDATE_ORDER_TIME:
+      let sortByTime = state.slice(0);
+      sortByTime.sort(function(a,b) {
+        return a.timestamp - b.timestamp;
+        });
+      return sortByTime;
+    case UPDATE_ORDER_VOTE_SCORE:
+        let sortByVoteScore = state.slice(0);
+        sortByVoteScore.sort(function(a,b){
+          return b.voteScore - a.voteScore;
+        });
+      return sortByVoteScore;
     default:
       return state;
   }

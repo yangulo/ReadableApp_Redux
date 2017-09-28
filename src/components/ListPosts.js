@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {Card} from 'material-ui/Card';
 import Chip from 'material-ui/Chip';
-import { fetchCategories, fetchPosts, orderBy} from '../actions';
+import { fetchCategories, fetchPosts, orderByTime, orderByVoteScore} from '../actions';
 import '../utils/App.css';
 import {cyan100} from 'material-ui/styles/colors';
 import TableArray from './TableArray';
@@ -27,6 +27,8 @@ class ListPosts extends Component {
   static propTypes = {
     fetchPosts: PropTypes.func.isRequired,
     fetchCategories: PropTypes.func.isRequired,
+    orderByTime: PropTypes.func.isRequired,
+    orderByVoteScore: PropTypes.func.isRequired
   };
 
   componentDidMount() {
@@ -58,7 +60,7 @@ class ListPosts extends Component {
                   </Chip>
                 ))}
               </div>
-              <TableArray posts={posts}/>
+              <TableArray posts={posts} onOrderByTime={this.props.orderByTime} onOrderByVoteScore={this.props.orderByVoteScore}/>
             </Card>
             <div>
               <FloatingActionButton className="floating-menu"style={style} onClick={function(event) {window.location = '/newpost'}}>
@@ -81,5 +83,8 @@ function mapStateToProps({categories, posts}) {
 }
 
 export default connect(mapStateToProps, {
-  fetchCategories, fetchPosts
+  fetchCategories, 
+  fetchPosts, 
+  orderByTime,
+  orderByVoteScore
 })(ListPosts)
