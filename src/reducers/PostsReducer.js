@@ -47,7 +47,7 @@ export default function(state = {}, action) {
     case UPDATE_ORDER_TIME:
       let sortByTime = state.slice(0);
       sortByTime.sort(function(a,b) {
-        return a.timestamp - b.timestamp;
+        return b.timestamp - a.timestamp;
         });
       return sortByTime;
     case UPDATE_ORDER_VOTE_SCORE:

@@ -30,7 +30,7 @@ import {
     onCellClick (row, col, posts) {
       if (col===-1) {
         let filteredPosts = posts.filter((post) => post.deleted === false);
-        window.location = '/post?id=' + filteredPosts[row].id;
+        window.location = '/post/'+ filteredPosts[row].category +'?id=' + filteredPosts[row].id;
       } 
     }
 

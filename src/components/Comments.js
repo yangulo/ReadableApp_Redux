@@ -59,7 +59,7 @@ class Comment extends Component {
                                     <FlatButton label="-1" secondary={true} onClick={() => this.props.onDownVote(comment.id)} />
                                     <FlatButton label="Update" primary={true} onClick={() => this.handleOpen(comment.id)} />
                                     <Dialog title="Update your Comment!" modal={false} open={this.state.open} onRequestClose={this.handleClose}>
-                                        <TextField hintText="Update Comment" floatingLabelText="Body:" onChange={this.handleChangeBody}/>
+                                        <TextField floatingLabelText="Body:" defaultValue={comment.body} onChange={this.handleChangeBody}/>
                                         <br />
                                         <FlatButton label="Ok" primary={true} keyboardFocused={true} onClick={() => this.modifyComment()}/>
                                     </Dialog>

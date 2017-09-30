@@ -113,9 +113,9 @@ class Post extends React.Component{
                             <FlatButton label="-1"  secondary={true} onClick={() => this.props.downVotePost(post.id)}/>
                             <FlatButton label="Update" primary={true} onClick={this.handleOpen}/>
                             <Dialog title="Update your Post!" actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}>
-                                <TextField hintText="New Title" floatingLabelText="Title:" onChange={this.handleChangeTitle}/>
+                                <TextField floatingLabelText="Title:" defaultValue={post.title} onChange={this.handleChangeTitle}/>
                                 <br/>
-                                <TextField hintText="New Body" floatingLabelText="Body:" onChange={this.handleChangeBody}/>
+                                <TextField floatingLabelText="Body:" defaultValue={post.body} onChange={this.handleChangeBody}/>
                             </Dialog>
                             <FlatButton label="Delete" primary={true} onClick={this.removePost} />
                         </CardActions>

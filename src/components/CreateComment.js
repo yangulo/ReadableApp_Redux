@@ -40,7 +40,7 @@ class CreateComment extends React.Component{
             parentId: this.props.postId
         };
         this.props.createComment(comment);
-        //window.location = '/post?id=' + comment.parentId; 
+        window.location = '/post?id=' + comment.parentId; 
         console.log(comment);
     }
 
