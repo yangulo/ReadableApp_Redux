@@ -39,8 +39,9 @@ class CreateComment extends React.Component{
             author: this.state.name, 
             parentId: this.props.postId
         };
+        let category = this.props.category;
         this.props.createComment(comment);
-        window.location = '/post?id=' + comment.parentId; 
+        window.location = '/post/' + category + '?id='+ comment.parentId; 
         console.log(comment);
     }
 

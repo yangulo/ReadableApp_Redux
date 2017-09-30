@@ -113,9 +113,9 @@ class Post extends React.Component{
                             <FlatButton label="-1"  secondary={true} onClick={() => this.props.downVotePost(post.id)}/>
                             <FlatButton label="Update" primary={true} onClick={this.handleOpen}/>
                             <Dialog title="Update your Post!" actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}>
-                                <TextField floatingLabelText="Title:" defaultValue={post.title} onChange={this.handleChangeTitle}/>
+                                <TextField defaultValue={post.title} floatingLabelText="Title:" onChange={this.handleChangeTitle}/>
                                 <br/>
-                                <TextField floatingLabelText="Body:" defaultValue={post.body} onChange={this.handleChangeBody}/>
+                                <TextField defaultValue={post.body} floatingLabelText="Body:" onChange={this.handleChangeBody}/>
                             </Dialog>
                             <FlatButton label="Delete" primary={true} onClick={this.removePost} />
                         </CardActions>
@@ -126,7 +126,7 @@ class Post extends React.Component{
                      <div className="TextField">
                         <h3>New Comment</h3>
                         <hr/>
-                        <CreateComment postId={this.getPostId()} createComment={this.props.createComment}/>
+                        <CreateComment postId={this.getPostId()} createComment={this.props.createComment} category={post.category}/>
                     </div>
             </div>
         );
