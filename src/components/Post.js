@@ -50,8 +50,8 @@ class Post extends React.Component{
         window.location = '/';
     };
 
-    handleOpen = () => {
-        this.setState({open: true});
+    handleOpen = (post) => {
+        this.setState({open: true, title: post.title, body: post.body });
     };
     
     handleClose = () => {
@@ -111,7 +111,7 @@ class Post extends React.Component{
                         <CardActions>
                             <FlatButton label="+1"  secondary={true} onClick={() => this.props.upVotePost(post.id)}/>
                             <FlatButton label="-1"  secondary={true} onClick={() => this.props.downVotePost(post.id)}/>
-                            <FlatButton label="Update" primary={true} onClick={this.handleOpen}/>
+                            <FlatButton label="Update" primary={true} onClick={() => this.handleOpen(post)}/>
                             <Dialog title="Update your Post!" actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}>
                                 <TextField defaultValue={post.title} floatingLabelText="Title:" onChange={this.handleChangeTitle}/>
                                 <br/>

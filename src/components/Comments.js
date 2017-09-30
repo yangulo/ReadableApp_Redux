@@ -10,11 +10,14 @@ class Comment extends Component {
     state = {
         open: false,
         body: "",
-        timestamp:""
+        timestamp:"",
+        comment: {
+            body: ""
+        }
     }
 
-    handleOpen(id) {
-        this.setState({open: true, commentId: id});
+    handleOpen(comment) {
+        this.setState({open: true, comment: comment, body: comment.body});
     };
 
     handleClose = () => {
@@ -26,7 +29,7 @@ class Comment extends Component {
     }
 
     modifyComment = () => {
-        let id = this.state.commentId
+        let id = this.state.comment.id
         let timestamp = new Date().getTime();
         let body = this.state.body;
         this.props.onUpdateComment(id,timestamp, body);
@@ -57,9 +60,9 @@ class Comment extends Component {
                                 <CardActions>
                                     <FlatButton label="+1" secondary={true} onClick={() => this.props.onUpVote(comment.id)} />
                                     <FlatButton label="-1" secondary={true} onClick={() => this.props.onDownVote(comment.id)} />
-                                    <FlatButton label="Update" primary={true} onClick={() => this.handleOpen(comment.id)} />
+                                    <FlatButton label="Update" primary={true} onClick={() => this.handleOpen(comment)} />
                                     <Dialog title="Update your Comment!" modal={false} open={this.state.open} onRequestClose={this.handleClose}>
-                                        <TextField floatingLabelText="Body:" onChange={this.handleChangeBody}/>
+                                        <TextField defaultValue={this.state.comment.body}  floatingLabelText="Body:" onChange={this.handleChangeBody}/>
                                         <br />
                                         <FlatButton label="Ok" primary={true} keyboardFocused={true} onClick={() => this.modifyComment()}/>
                                     </Dialog>
